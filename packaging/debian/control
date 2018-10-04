@@ -1,0 +1,57 @@
+#
+#    fty-scripts-rest - Scripts REST API
+#
+#    Copyright (C) 2014 - 2018 Eaton
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License along
+#    with this program; if not, write to the Free Software Foundation, Inc.,
+#    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+Source:         fty-scripts-rest
+Section:        net
+Priority:       optional
+Maintainer:     fty-scripts-rest Developers <eatonproductfeedback@eaton.com>
+Standards-Version: 4.0.1.0
+Build-Depends: debhelper (>= 9),
+    pkg-config,
+    libcxxtools-dev,
+    libtntnet-dev,
+    liblog4cplus-dev,
+    libsasl2-dev,
+    libfty-common-rest-dev,
+    asciidoc-base | asciidoc, xmlto,
+    dh-autoreconf
+
+Package: libfty-scripts-rest1
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: fty-scripts-rest shared library
+ This package contains shared library for fty-scripts-rest:
+ scripts rest api
+
+Package: fty-scripts-rest
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: runnable binaries from fty-scripts-rest
+ Main package for fty-scripts-rest:
+ scripts rest api
+
+Package: fty-scripts-rest-dbg
+Architecture: any
+Section: debug
+Priority: optional
+Depends:
+    ${misc:Depends}
+Description: fty-scripts-rest debugging symbols
+ This package contains the debugging symbols for fty-scripts-rest:
+ scripts rest api.
