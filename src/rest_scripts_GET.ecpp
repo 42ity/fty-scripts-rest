@@ -41,9 +41,6 @@
 UserInfo user;
 std::string gaccess_token;
 </%request>
-<%args>
-std::string name; // script name (optional)
-</%args>
 <%cpp>
     // check user permissions
     static const std::map <BiosProfile, std::string> PERMISSIONS = {
@@ -52,6 +49,7 @@ std::string name; // script name (optional)
 
     CHECK_USER_PERMISSIONS_OR_DIE(PERMISSIONS);
 
+    std::string name = request.getArg("name");
     if (name.empty()) {
         /**
          * Get a list of all scripts.

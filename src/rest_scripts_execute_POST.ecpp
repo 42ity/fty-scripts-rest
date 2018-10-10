@@ -83,7 +83,7 @@ std::string gaccess_token;
             }
         }
         catch (std::runtime_error &e) {
-            http_die("request-param-bad", array_parsing.c_str(), "Incorrectly formatted", "Array of strings");
+            http_die("request-param-bad", array_parsing.c_str(), e.what(), "Array of strings");
         }
     }
 

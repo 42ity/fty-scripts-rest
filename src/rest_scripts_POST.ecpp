@@ -63,15 +63,15 @@ std::string gaccess_token;
     struct dirent *fdirent;
     while ((fdirent = readdir(fdir))) {
         if (filename_regex.match(fdirent->d_name)) {
-            nbfiles++;
+            // Stop DoS by limiting max number of scripts.
+            if (nbfiles++ >= SCRIPT_MAX_FILES) {
+                closedir(fdir);
+                http_die("precondition-failed", "Max number of scripts reached");
+            }
         }
     }
-    closedir(fdir);
 
-    // Stop DoS by limiting max number of scripts.
-    if (nbfiles >= SCRIPT_MAX_FILES) {
-        http_die("precondition-failed", "Max number of scripts reached");
-    }
+    closedir(fdir);
 
     // http://www.tntnet.org/howto/upload-howto.html
     const tnt::Multipart& mp = request.getMultipart();

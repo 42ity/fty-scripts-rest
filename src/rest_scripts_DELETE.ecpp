@@ -37,9 +37,6 @@
 UserInfo user;
 std::string gaccess_token;
 </%request>
-<%args>
-std::string name; // script name (optional)
-</%args>
 <%cpp>
     // check user permissions
     static const std::map <BiosProfile, std::string> PERMISSIONS = {
@@ -50,7 +47,7 @@ std::string name; // script name (optional)
 
     // Check valid filename.
     std::string checked_name;
-    check_regex_text_or_die("name", name, checked_name, SCRIPT_FILENAME_REGEX);
+    check_regex_text_or_die("name", request.getArg("name"), checked_name, SCRIPT_FILENAME_REGEX);
 
     if (unlink((SCRIPT_DIRECTORY+checked_name).c_str()) == -1) {
         if (errno == ENOENT) {
