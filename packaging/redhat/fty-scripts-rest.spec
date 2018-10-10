@@ -28,13 +28,12 @@
 %else
 %define DRAFTS no
 %endif
-%global debug_package %{nil}
 Name:           fty-scripts-rest
 Version:        1.0.0
 Release:        1
 Summary:        scripts rest api
-License:        Eaton Proprietary License
-URL:            http://pqsoftware.eaton.com/
+License:        GPL-2.0+
+URL:            https://42ity.org
 Source0:        %{name}-%{version}.tar.gz
 Group:          System/Libraries
 # Note: ghostscript is required by graphviz which is required by
@@ -57,6 +56,42 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 fty-scripts-rest scripts rest api.
+
+%package -n libfty_scripts_rest1
+Group:          System/Libraries
+Summary:        scripts rest api shared library
+
+%description -n libfty_scripts_rest1
+This package contains shared library for fty-scripts-rest: scripts rest api
+
+%post -n libfty_scripts_rest1 -p /sbin/ldconfig
+%postun -n libfty_scripts_rest1 -p /sbin/ldconfig
+
+%files -n libfty_scripts_rest1
+%defattr(-,root,root)
+%{_libdir}/libfty_scripts_rest.so.*
+
+%package devel
+Summary:        scripts rest api
+Group:          System/Libraries
+Requires:       libfty_scripts_rest1 = %{version}
+Requires:       cxxtools-devel
+Requires:       tntnet-devel
+Requires:       log4cplus-devel
+Requires:       cyrus-sasl-devel
+Requires:       fty-common-rest-devel
+
+%description devel
+scripts rest api development tools
+This package contains development files for fty-scripts-rest: scripts rest api
+
+%files devel
+%defattr(-,root,root)
+%{_includedir}/*
+%{_libdir}/libfty_scripts_rest.so
+%{_libdir}/pkgconfig/libfty_scripts_rest.pc
+%{_mandir}/man3/*
+%{_mandir}/man7/*
 
 %prep
 

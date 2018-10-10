@@ -1,0 +1,3 @@
+usr/include/*
+usr/lib/*/libfty_scripts_rest.so
+usr/lib/*/pkgconfig/libfty_scripts_rest.pc

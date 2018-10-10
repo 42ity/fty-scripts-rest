@@ -35,10 +35,6 @@
 //  Extra headers
 
 //  Opaque class structures to allow forward references
-#ifndef HELPERS_T_DEFINED
-typedef struct _helpers_t helpers_t;
-#define HELPERS_T_DEFINED
-#endif
 #ifndef REST_SCRIPTS_GET_T_DEFINED
 typedef struct _rest_scripts_get_t rest_scripts_get_t;
 #define REST_SCRIPTS_GET_T_DEFINED
@@ -95,7 +91,6 @@ safe_malloc (size_t size, const char *file, unsigned line)
 #endif // __CZMQ_PRELUDE_H_INCLUDED__
 
 
-#include "helpers.h"
 #include "rest_scripts_GET.h"
 #include "rest_scripts_POST.h"
 #include "rest_scripts_DELETE.h"

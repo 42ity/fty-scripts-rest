@@ -20,7 +20,7 @@
 Source:         fty-scripts-rest
 Section:        net
 Priority:       optional
-Maintainer:     fty-scripts-rest Developers <eatonproductfeedback@eaton.com>
+Maintainer:     fty-scripts-rest Developers <eatonipcopensource@eaton.com>
 Standards-Version: 4.0.1.0
 Build-Depends: debhelper (>= 9),
     pkg-config,
@@ -39,11 +39,19 @@ Description: fty-scripts-rest shared library
  This package contains shared library for fty-scripts-rest:
  scripts rest api
 
-Package: fty-scripts-rest
+Package: libfty-scripts-rest-dev
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-Description: runnable binaries from fty-scripts-rest
- Main package for fty-scripts-rest:
+Section: libdevel
+Depends:
+    ${misc:Depends},
+    libcxxtools-dev,
+    libtntnet-dev,
+    liblog4cplus-dev,
+    libsasl2-dev,
+    libfty-common-rest-dev,
+    libfty-scripts-rest1 (= ${binary:Version})
+Description: fty-scripts-rest development tools
+ This package contains development files for fty-scripts-rest:
  scripts rest api
 
 Package: fty-scripts-rest-dbg
@@ -51,6 +59,7 @@ Architecture: any
 Section: debug
 Priority: optional
 Depends:
+    libfty-scripts-rest1 (= ${binary:Version}),
     ${misc:Depends}
 Description: fty-scripts-rest debugging symbols
  This package contains the debugging symbols for fty-scripts-rest:

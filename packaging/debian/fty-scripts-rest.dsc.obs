@@ -2,7 +2,7 @@ Format: 3.0 (quilt)
 Binary: fty-scripts-rest
 Source: fty-scripts-rest
 Version: 1.0.0
-Maintainer: fty-scripts-rest Developers <eatonproductfeedback@eaton.com>
+Maintainer: fty-scripts-rest Developers <eatonipcopensource@eaton.com>
 Architecture: any
 Build-Depends: debhelper (>= 9),
     pkg-config,

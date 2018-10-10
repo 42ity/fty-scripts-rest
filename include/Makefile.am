@@ -4,6 +4,7 @@
 ################################################################################
 nobase_include_HEADERS = \
     fty-scripts-rest.h \
+    helpers.h \
     fty_scripts_rest_library.h
 
 

@@ -50,11 +50,11 @@ EXTRA_DIST += \
 endif
 
 EXTRA_DIST += \
-    src/helpers.h \
     src/rest_scripts_GET.h \
     src/rest_scripts_POST.h \
     src/rest_scripts_DELETE.h \
     src/rest_scripts_execute_POST.h \
+    README.md \
     src/fty_scripts_rest_classes.h
 
 # NOTE: this "include" syntax is not a "make" but an "autotools" keyword,
