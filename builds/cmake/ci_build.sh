@@ -66,7 +66,7 @@ if ! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list cxxtools-dev >
        (command -v brew >/dev/null 2>&1 && brew ls --versions cxxtools >/dev/null 2>&1)); then
     BASE_PWD=${PWD}
     cd tmp-deps
-    $CI_TIME git clone --quiet --depth 1 -b release/IPM_Infra-1.4 https://github.com/42ity/cxxtools.git cxxtools
+    $CI_TIME git clone --quiet --depth 1 -b 2.2-FTY-master https://github.com/42ity/cxxtools.git cxxtools
     cd cxxtools
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
@@ -94,7 +94,7 @@ if ! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list tntnet-dev >/d
        (command -v brew >/dev/null 2>&1 && brew ls --versions tntnet >/dev/null 2>&1)); then
     BASE_PWD=${PWD}
     cd tmp-deps
-    $CI_TIME git clone --quiet --depth 1 -b release/IPM_Infra-1.4 https://github.com/42ity/tntnet.git tntnet
+    $CI_TIME git clone --quiet --depth 1 -b 2.2-FTY-master https://github.com/42ity/tntnet.git tntnet
     cd tntnet
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
@@ -122,7 +122,7 @@ if ! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list log4cplus-dev 
        (command -v brew >/dev/null 2>&1 && brew ls --versions log4cplus >/dev/null 2>&1)); then
     BASE_PWD=${PWD}
     cd tmp-deps
-    $CI_TIME git clone --quiet --depth 1 -b release/IPM_Infra-1.4 https://github.com/42ity/log4cplus.git log4cplus
+    $CI_TIME git clone --quiet --depth 1 -b 1.1.2-FTY-master https://github.com/42ity/log4cplus.git log4cplus
     cd log4cplus
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
@@ -150,7 +150,7 @@ if ! ((command -v dpkg-query >/dev/null 2>&1 && dpkg-query --list libfty_common_
        (command -v brew >/dev/null 2>&1 && brew ls --versions fty-common-rest >/dev/null 2>&1)); then
     BASE_PWD=${PWD}
     cd tmp-deps
-    $CI_TIME git clone --quiet --depth 1 -b release/IPM_Infra-1.4 https://github.com/42ity/fty-common-rest.git fty-common-rest
+    $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/fty-common-rest.git fty-common-rest
     cd fty-common-rest
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR

@@ -29,30 +29,29 @@
 
     <use project = "cxxtools" test="cxxtools::Utf8Codec::Utf8Codec" header="cxxtools/allocator.h"
         repository = "https://github.com/42ity/cxxtools.git"
-        release = "release/IPM_Infra-1.4"
+        release = "2.2-FTY-master"
         />
 
     <use project = "tntnet"
         header = "tnt/tntnet.h"
         repository = "https://github.com/42ity/tntnet.git"
-        release = "release/IPM_Infra-1.4"
+        release = "2.2-FTY-master"
         />
 
     <use project = "fty-common-rest" libname = "libfty_common_rest" header="fty_common_rest.h"
         repository = "https://github.com/42ity/fty-common-rest.git"
-        release = "release/IPM_Infra-1.4"
         test = "fty_commmon_selftest" >
 
         <use project = "log4cplus" header = "log4cplus/logger.h"
             test = "appender_test"
-            release = "release/IPM_Infra-1.4"
+            release = "1.1.2-FTY-master"
             repository="https://github.com/42ity/log4cplus.git"
             />
 
         <use project = "tntnet"
             header = "tnt/tntnet.h"
             repository = "https://github.com/42ity/tntnet.git"
-            release = "release/IPM_Infra-1.4"
+            release = "2.2-FTY-master"
             />
 
         <use project = "libsasl2" header = "sasl/sasl.h"
