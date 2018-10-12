@@ -49,7 +49,7 @@ std::string gaccess_token;
 
     CHECK_USER_PERMISSIONS_OR_DIE(PERMISSIONS);
 
-    std::string name = request.getArg("name");
+    std::string name = qparam.param("name");
     if (name.empty()) {
         /**
          * Get a list of all scripts.
