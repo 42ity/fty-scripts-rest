@@ -52,6 +52,7 @@ BuildRequires:  tntnet-devel
 BuildRequires:  log4cplus-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  fty-common-rest-devel
+BuildRequires:  fty-common-mlm-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -80,6 +81,7 @@ Requires:       tntnet-devel
 Requires:       log4cplus-devel
 Requires:       cyrus-sasl-devel
 Requires:       fty-common-rest-devel
+Requires:       fty-common-mlm-devel
 
 %description devel
 scripts rest api development tools

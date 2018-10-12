@@ -36,6 +36,7 @@
 #include <cxxtools/jsondeserializer.h>
 #include <cxxtools/jsonserializer.h>
 #include <cxxtools/regex.h>
+#include <fty_common_mlm_subprocess.h>
 
 #include "constants.h"
 #include "helpers.h"
@@ -98,26 +99,12 @@ std::string gaccess_token;
     }
 
     double execution_time;
+    int status;
     std::ostringstream output;
-
-    // Set up child's file descriptors.
-    int out_pipe[2], wstatus;
-    posix_spawn_file_actions_t fileActions;
-    pid_t childPid;
     struct timeval tvStart, tvEnd;
 
-    if (pipe(out_pipe) != 0) {
-        http_die("internal-error", "Error while creating pipe");
-    }
-    posix_spawn_file_actions_init(&fileActions);
-    posix_spawn_file_actions_addclose(&fileActions, STDIN_FILENO);
-    posix_spawn_file_actions_addclose(&fileActions, out_pipe[0]);
-    posix_spawn_file_actions_adddup2(&fileActions, out_pipe[1], STDOUT_FILENO);
-    posix_spawn_file_actions_adddup2(&fileActions, out_pipe[1], STDERR_FILENO);
-    posix_spawn_file_actions_addclose(&fileActions, out_pipe[1]);
-
     // Build child's argv.
-    std::vector<const char*> argv;
+    std::vector<std::string> argv;
 
     argv.push_back("/usr/bin/sudo");
     argv.push_back("/usr/libexec/fty/runas-_bios-script");
@@ -131,29 +118,23 @@ std::string gaccess_token;
     for (const auto &i : parameters) {
         argv.push_back(i.c_str());
     }
-    argv.push_back(nullptr);
 
     // Launch child.
     gettimeofday(&tvStart, nullptr);
 
-    if (posix_spawnp(&childPid, "/usr/bin/sudo", &fileActions, nullptr, (char* const*)&argv[0], environ) != 0) {
-        close(out_pipe[0]);
-        close(out_pipe[1]);
+    MlmSubprocess::SubProcess child(argv, MlmSubprocess::SubProcess::STDOUT_PIPE|MlmSubprocess::SubProcess::STDERR_TO_STDOUT_PIPE);
+    if (!child.run()) {
         http_die("internal-error", "Error while spawning process");
     }
-
-    close(out_pipe[1]);
 
     // Slurp output.
     char buffer[4096];
     int buffer_read;
-    while ((buffer_read = read(out_pipe[0], buffer, sizeof(buffer))) > 0) {
+    while ((buffer_read = read(child.getStdout(), buffer, sizeof(buffer))) > 0) {
         output.write(buffer, buffer_read);
     }
 
-    close(out_pipe[0]);
-
-    waitpid(childPid, &wstatus, 0);
+    status = child.wait(true);
     gettimeofday(&tvEnd, nullptr);
 
     execution_time = (tvEnd.tv_sec - tvStart.tv_sec) + (tvEnd.tv_usec - tvStart.tv_usec) / 1000000.0;
@@ -161,7 +142,7 @@ std::string gaccess_token;
     // Serialize reply.
     cxxtools::SerializationInfo out;
     out.addValue("execution_time", execution_time);
-    out.addValue("result", WEXITSTATUS(wstatus));
+    out.addValue("result", status);
     out.addValue("output", output.str());
     {
         cxxtools::JsonSerializer serializer(reply.out());

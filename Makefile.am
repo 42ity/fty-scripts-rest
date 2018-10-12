@@ -14,10 +14,11 @@ AM_CPPFLAGS = \
     ${log4cplus_CFLAGS} \
     ${libsasl2_CFLAGS} \
     ${fty_common_rest_CFLAGS} \
+    ${fty_common_mlm_CFLAGS} \
     -D__STDC_FORMAT_MACROS \
     -I$(srcdir)/include
 
-project_libs = ${cxxtools_LIBS} ${tntnet_LIBS} ${log4cplus_LIBS} ${libsasl2_LIBS} ${fty_common_rest_LIBS}
+project_libs = ${cxxtools_LIBS} ${tntnet_LIBS} ${log4cplus_LIBS} ${libsasl2_LIBS} ${fty_common_rest_LIBS} ${fty_common_mlm_LIBS}
 
 SUBDIRS = doc
 SUBDIRS += include
@@ -43,6 +44,7 @@ EXTRA_DIST += \
     Findlog4cplus.cmake \
     Findlibsasl2.cmake \
     Findfty_common_rest.cmake \
+    Findfty_common_mlm.cmake \
     builds/cmake/Modules/ClangFormat.cmake \
     builds/cmake/clang-format-check.sh.in \
     builds/cmake/Config.cmake.in \
