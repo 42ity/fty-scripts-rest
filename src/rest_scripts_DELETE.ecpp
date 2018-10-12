@@ -46,8 +46,8 @@ std::string gaccess_token;
     CHECK_USER_PERMISSIONS_OR_DIE(PERMISSIONS);
 
     // Check valid filename.
-    std::string checked_name;
-    check_regex_text_or_die("name", qparam.param("name"), checked_name, SCRIPT_FILENAME_REGEX);
+    std::string name, checked_name;
+    check_regex_text_or_die("name", name, checked_name, SCRIPT_FILENAME_REGEX);
 
     if (unlink((SCRIPT_DIRECTORY+checked_name).c_str()) == -1) {
         if (errno == ENOENT) {

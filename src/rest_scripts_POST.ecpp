@@ -50,6 +50,22 @@ std::string gaccess_token;
 
     CHECK_USER_PERMISSIONS_OR_DIE(PERMISSIONS);
 
+    // http://www.tntnet.org/howto/upload-howto.html
+    const tnt::Multipart& mp = request.getMultipart();
+    tnt::Multipart::const_iterator it = mp.find("assets");
+    if (it == mp.end()) {
+        http_die("request-param-required", "file=assets");
+    }
+
+    // Check if file name and size is acceptable.
+    std::string checked_name;
+    size_t filesize;
+    check_regex_text_or_die("name", it->getFilename(), checked_name, SCRIPT_FILENAME_REGEX);
+    filesize = std::distance(it->getBodyBegin(), it->getBodyEnd());
+    if (filesize > SCRIPT_FILE_MAX_SIZE) {
+        http_die("content-too-big", std::to_string(SCRIPT_FILE_MAX_SIZE).c_str());
+    }
+
     // Open directory.
     DIR *fdir = opendir(SCRIPT_DIRECTORY.c_str());
     if (!fdir) {
@@ -58,35 +74,28 @@ std::string gaccess_token;
 
     int nbfiles = 0;
     cxxtools::Regex filename_regex(SCRIPT_FILENAME_REGEX, REG_EXTENDED | REG_ICASE);
+    bool known_script = false;
 
-    // Count all files we're interested in.
+    // Check max number of scripts.
     struct dirent *fdirent;
     while ((fdirent = readdir(fdir))) {
         if (filename_regex.match(fdirent->d_name)) {
-            // Stop DoS by limiting max number of scripts.
-            if (nbfiles++ >= SCRIPT_MAX_FILES) {
-                closedir(fdir);
-                http_die("precondition-failed", "Max number of scripts reached");
+            if (streq(fdirent->d_name, checked_name.c_str())) {
+                // We're going to replace an existing script.
+                known_script = true;
+                break;
             }
+            nbfiles++;
         }
     }
 
     closedir(fdir);
 
-    // http://www.tntnet.org/howto/upload-howto.html
-    const tnt::Multipart& mp = request.getMultipart();
-    tnt::Multipart::const_iterator it = mp.find("assets");
-    if (it == mp.end()) {
-        http_die("request-param-required", "file=assets");
-    }
-
-    // Check if file is acceptable.
-    std::string checked_name;
-    size_t filesize;
-    check_regex_text_or_die("name", it->getFilename(), checked_name, SCRIPT_FILENAME_REGEX);
-    filesize = std::distance(it->getBodyBegin(), it->getBodyEnd());
-    if (filesize > SCRIPT_FILE_MAX_SIZE) {
-        http_die("content-too-big", std::to_string(SCRIPT_FILE_MAX_SIZE).c_str());
+    if (nbfiles >= SCRIPT_MAX_FILES && !known_script) {
+        // Too many scripts.
+        std::ostringstream msg;
+        msg << "Max number of scripts reached (" << nbfiles << " in store, max " << SCRIPT_MAX_FILES << ")";
+        http_die("precondition-failed", msg.str().c_str());
     }
 
     // Grab file data.
