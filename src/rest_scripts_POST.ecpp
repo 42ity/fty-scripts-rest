@@ -35,7 +35,7 @@
 #include <cxxtools/jsonserializer.h>
 #include <cxxtools/regex.h>
 
-#include "constants.h"
+#include "helpers.h"
 
 </%pre>
 <%request scope="global">

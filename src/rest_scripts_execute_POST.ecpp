@@ -38,7 +38,6 @@
 #include <cxxtools/regex.h>
 #include <fty_common_mlm_subprocess.h>
 
-#include "constants.h"
 #include "helpers.h"
 
 </%pre>
