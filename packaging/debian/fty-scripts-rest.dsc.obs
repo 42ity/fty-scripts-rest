@@ -1,0 +1,19 @@
+Format: 3.0 (quilt)
+Binary: fty-scripts-rest
+Source: fty-scripts-rest
+Version: 1.0.0
+Maintainer: fty-scripts-rest Developers <eatonipcopensource@eaton.com>
+Architecture: any
+Build-Depends: debhelper (>= 9),
+    pkg-config,
+    libcxxtools-dev,
+    libtntnet-dev,
+    liblog4cplus-dev,
+    libsasl2-dev,
+    libfty-common-rest-dev,
+    libfty-common-mlm-dev,
+    asciidoc-base | asciidoc, xmlto,
+    dh-autoreconf
+
+Files:
+ 7697688bf65a35bc33ae2db51ebb0e3b 818110 fty-scripts-rest.tar.gz
