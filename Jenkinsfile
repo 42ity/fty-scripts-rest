@@ -25,7 +25,7 @@
 */
 
 pipeline {
-                    agent { label "devel-image-ipm_1.4 && x86_64" }
+                    agent { label "devel-image && x86_64" }
     parameters {
         // Use DEFAULT_DEPLOY_BRANCH_PATTERN and DEFAULT_DEPLOY_JOB_NAME if
         // defined in this jenkins setup -- in Jenkins Management Web-GUI
@@ -49,7 +49,7 @@ pipeline {
             description: 'If the deployment is done, should THIS job wait for it to complete and include its success or failure as the build result (true), or should it schedule the job and exit quickly to free up the executor (false)',
             name: 'DEPLOY_REPORT_RESULT')
         booleanParam (
-            defaultValue: false,
+            defaultValue: true,
             description: 'Attempt stable build without DRAFT API in this run?',
             name: 'DO_BUILD_WITHOUT_DRAFT_API')
         booleanParam (
