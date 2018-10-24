@@ -20,11 +20,13 @@ AM_CPPFLAGS = \
     ${fty_common_mlm_CFLAGS} \
     ${tntnet_CFLAGS} \
     ${libsasl2_CFLAGS} \
+    ${tntdb_CFLAGS} \
+    ${fty_common_db_CFLAGS} \
     ${fty_common_rest_CFLAGS} \
     -D__STDC_FORMAT_MACROS \
     -I$(srcdir)/include
 
-project_libs = ${cxxtools_LIBS} ${log4cplus_LIBS} ${fty_common_logging_LIBS} ${fty_common_LIBS} ${libsodium_LIBS} ${libzmq_LIBS} ${czmq_LIBS} ${malamute_LIBS} ${fty_common_mlm_LIBS} ${tntnet_LIBS} ${libsasl2_LIBS} ${fty_common_rest_LIBS}
+project_libs = ${cxxtools_LIBS} ${log4cplus_LIBS} ${fty_common_logging_LIBS} ${fty_common_LIBS} ${libsodium_LIBS} ${libzmq_LIBS} ${czmq_LIBS} ${malamute_LIBS} ${fty_common_mlm_LIBS} ${tntnet_LIBS} ${libsasl2_LIBS} ${tntdb_LIBS} ${fty_common_db_LIBS} ${fty_common_rest_LIBS}
 
 SUBDIRS = doc
 SUBDIRS += include
@@ -56,6 +58,8 @@ EXTRA_DIST += \
     Findfty_common_mlm.cmake \
     Findtntnet.cmake \
     Findlibsasl2.cmake \
+    Findtntdb.cmake \
+    Findfty_common_db.cmake \
     Findfty_common_rest.cmake \
     builds/cmake/Modules/ClangFormat.cmake \
     builds/cmake/clang-format-check.sh.in \

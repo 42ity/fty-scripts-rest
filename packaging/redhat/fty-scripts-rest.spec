@@ -59,6 +59,8 @@ BuildRequires:  malamute-devel
 BuildRequires:  fty-common-mlm-devel
 BuildRequires:  tntnet-devel
 BuildRequires:  cyrus-sasl-devel
+BuildRequires:  tntdb-devel
+BuildRequires:  fty-common-db-devel
 BuildRequires:  fty-common-rest-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -96,6 +98,8 @@ Requires:       malamute-devel
 Requires:       fty-common-mlm-devel
 Requires:       tntnet-devel
 Requires:       cyrus-sasl-devel
+Requires:       tntdb-devel
+Requires:       fty-common-db-devel
 Requires:       fty-common-rest-devel
 
 %description devel
