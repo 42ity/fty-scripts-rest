@@ -1,5 +1,7 @@
+# Custom targets, not managed via zproject
+
 ECPPC=ecppc
-ECPPFLAGS= --nolog
+ECPPFLAGS = --nolog
 ECPPFLAGS_CPP=
 
 ECPPFILES= \
@@ -13,7 +15,7 @@ TNTLIB_DIRNAME=$(prefix)/lib/bios
 
 ECPPCCFILES = $(ECPPFILES:.ecpp=.cc)
 
-EXTRA_DIST += $(addprefix src/,$(ECPPFILES))
+EXTRA_DIST += $(addprefix $(top_srcdir)/src/,$(ECPPFILES))
 
 project_libs += -ltntnet
 
