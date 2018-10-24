@@ -43,7 +43,7 @@
 </%pre>
 <%request scope="global">
 UserInfo user;
-std::string gaccess_token;
+//std::string gaccess_token;
 </%request>
 <%cpp>
     // Check user permissions.
