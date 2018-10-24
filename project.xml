@@ -48,6 +48,12 @@
         repository = "https://github.com/42ity/fty-common-mlm.git"
         release = "master" >
 
+        <use project = "fty-common" libname = "libfty_common" header="fty_common.h"
+            repository = "https://github.com/42ity/fty-common.git"
+            release = "master"
+            test = "fty_commmon_selftest" >
+        </use>
+
         <use project = "malamute" min_major = "1" test = "mlm_server_test"
             repository="https://github.com/42ity/malamute.git"
             release = "1.0-FTY-master">
