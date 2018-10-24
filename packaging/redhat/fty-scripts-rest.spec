@@ -49,11 +49,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  gcc-c++
 BuildRequires:  cxxtools-devel
-BuildRequires:  tntnet-devel
 BuildRequires:  log4cplus-devel
+BuildRequires:  fty-common-logging-devel
+BuildRequires:  libsodium-devel
+BuildRequires:  zeromq-devel
+BuildRequires:  czmq-devel
+BuildRequires:  malamute-devel
+BuildRequires:  fty-common-mlm-devel
+BuildRequires:  tntnet-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  fty-common-rest-devel
-BuildRequires:  fty-common-mlm-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -80,11 +85,16 @@ Summary:        scripts rest api
 Group:          System/Libraries
 Requires:       libfty_scripts_rest1 = %{version}
 Requires:       cxxtools-devel
-Requires:       tntnet-devel
 Requires:       log4cplus-devel
+Requires:       fty-common-logging-devel
+Requires:       libsodium-devel
+Requires:       zeromq-devel
+Requires:       czmq-devel
+Requires:       malamute-devel
+Requires:       fty-common-mlm-devel
+Requires:       tntnet-devel
 Requires:       cyrus-sasl-devel
 Requires:       fty-common-rest-devel
-Requires:       fty-common-mlm-devel
 
 %description devel
 scripts rest api development tools

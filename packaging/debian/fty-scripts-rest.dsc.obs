@@ -7,11 +7,16 @@ Architecture: any
 Build-Depends: debhelper (>= 9),
     pkg-config,
     libcxxtools-dev,
-    libtntnet-dev,
     liblog4cplus-dev,
+    libfty-common-logging-dev,
+    libsodium-dev,
+    libzmq3-dev,
+    libczmq-dev,
+    libmlm-dev,
+    libfty-common-mlm-dev,
+    libtntnet-dev,
     libsasl2-dev,
     libfty-common-rest-dev,
-    libfty-common-mlm-dev,
     asciidoc-base | asciidoc, xmlto,
     dh-autoreconf
 

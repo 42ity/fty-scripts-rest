@@ -24,17 +24,17 @@ save.xml
 *.lo
 
 # Executables
-src/etn-um-rest_selftest
-src/etn_um_rest_selftest
+src/fty-scripts-rest_selftest
+src/fty_scripts_rest_selftest
 *.exe
 *.out
 *.app
 core
 
 # Distcheck workspace and archives
-etn-um-rest-*/
-etn-um-rest-*.tar.gz
-etn-um-rest-*.zip
+fty-scripts-rest-*/
+fty-scripts-rest-*.tar.gz
+fty-scripts-rest-*.zip
 
 # Man pages
 doc/*.1
