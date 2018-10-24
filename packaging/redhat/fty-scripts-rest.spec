@@ -1,5 +1,6 @@
 #
 #    fty-scripts-rest - Scripts REST API
+#    NOTE: This file was customized after generation, be sure to keep it
 #
 #    Copyright (C) 2014 - 2018 Eaton
 #
@@ -68,9 +69,11 @@ This package contains shared library for fty-scripts-rest: scripts rest api
 %post -n libfty_scripts_rest1 -p /sbin/ldconfig
 %postun -n libfty_scripts_rest1 -p /sbin/ldconfig
 
+# Note: the .so file is delivered as part of main package for tntnet to find it
 %files -n libfty_scripts_rest1
 %defattr(-,root,root)
 %{_libdir}/libfty_scripts_rest.so.*
+%{_libdir}/libfty_scripts_rest.so
 
 %package devel
 Summary:        scripts rest api
@@ -87,10 +90,11 @@ Requires:       fty-common-mlm-devel
 scripts rest api development tools
 This package contains development files for fty-scripts-rest: scripts rest api
 
+# Note: the .so file is delivered as part of main package for tntnet to find it
 %files devel
 %defattr(-,root,root)
 %{_includedir}/*
-%{_libdir}/libfty_scripts_rest.so
+###%{_libdir}/libfty_scripts_rest.so
 %{_libdir}/pkgconfig/libfty_scripts_rest.pc
 %{_mandir}/man3/*
 %{_mandir}/man7/*
