@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Create scripts directory
-mkdir -p /var/lib/fty/fty-scripts-rest
-chgrp www-data -R /var/lib/fty/fty-scripts-rest
-chmod g+rwxs /var/lib/fty/fty-scripts-rest
