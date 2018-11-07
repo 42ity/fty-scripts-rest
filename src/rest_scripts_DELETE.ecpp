@@ -46,7 +46,8 @@ UserInfo user;
     CHECK_USER_PERMISSIONS_OR_DIE(PERMISSIONS);
 
     // Check valid filename.
-    std::string name, checked_name;
+    std::string name = qparam.param("name");
+    std::string checked_name;
     check_regex_text_or_die("name", name, checked_name, SCRIPT_FILENAME_REGEX);
 
     if (unlink((SCRIPT_DIRECTORY+checked_name).c_str()) == -1) {
