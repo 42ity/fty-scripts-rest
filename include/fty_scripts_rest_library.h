@@ -31,7 +31,6 @@
 
 //  External dependencies
 #include <cxxtools/allocator.h>
-//#include <tnt/tntnet.h>
 #include <fty_log.h>
 #include <fty_common_mlm.h>
 #include <fty_common_rest.h>
