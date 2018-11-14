@@ -66,7 +66,6 @@ UserInfo user;
     in.getMember("name").getValue(name);
     std::string checked_name;
     check_regex_text_or_die("name", name, checked_name, SCRIPT_FILENAME_REGEX);
-    checked_name = SCRIPT_DIRECTORY + checked_name;
 
     std::vector<std::string> parameters, env;
     {
@@ -106,7 +105,7 @@ UserInfo user;
     std::vector<std::string> argv;
 
     argv.push_back("/usr/bin/sudo");
-    argv.push_back("/usr/libexec/fty/runas-_bios-script");
+    argv.push_back("/usr/libexec/fty/run-user-script");
     for (const auto &i : env) {
         argv.push_back("-e");
         argv.push_back(i.c_str());
