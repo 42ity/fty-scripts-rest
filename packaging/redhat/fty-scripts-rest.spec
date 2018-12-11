@@ -51,11 +51,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  cxxtools-devel
 BuildRequires:  log4cplus-devel
 BuildRequires:  fty-common-logging-devel
-BuildRequires:  fty-common-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  zeromq-devel
 BuildRequires:  czmq-devel
 BuildRequires:  malamute-devel
+BuildRequires:  openssl-devel
+BuildRequires:  fty-common-devel
 BuildRequires:  fty-common-mlm-devel
 BuildRequires:  tntnet-devel
 BuildRequires:  cyrus-sasl-devel
@@ -90,11 +91,12 @@ Requires:       libfty_scripts_rest1 = %{version}
 Requires:       cxxtools-devel
 Requires:       log4cplus-devel
 Requires:       fty-common-logging-devel
-Requires:       fty-common-devel
 Requires:       libsodium-devel
 Requires:       zeromq-devel
 Requires:       czmq-devel
 Requires:       malamute-devel
+Requires:       openssl-devel
+Requires:       fty-common-devel
 Requires:       fty-common-mlm-devel
 Requires:       tntnet-devel
 Requires:       cyrus-sasl-devel
@@ -111,6 +113,7 @@ This package contains development files for fty-scripts-rest: scripts rest api
 %defattr(-,root,root)
 %{_includedir}/*
 ###%{_libdir}/libfty_scripts_rest.so
+%{_libdir}/libfty_scripts_rest.so
 %{_libdir}/pkgconfig/libfty_scripts_rest.pc
 %{_mandir}/man3/*
 %{_mandir}/man7/*
