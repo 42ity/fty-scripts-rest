@@ -32,8 +32,6 @@
 //  External API
 #include "../include/fty-scripts-rest.h"
 
-//  Extra headers
-
 //  Opaque class structures to allow forward references
 #ifndef REST_SCRIPTS_GET_T_DEFINED
 typedef struct _rest_scripts_get_t rest_scripts_get_t;
@@ -51,6 +49,8 @@ typedef struct _rest_scripts_delete_t rest_scripts_delete_t;
 typedef struct _rest_scripts_execute_post_t rest_scripts_execute_post_t;
 #define REST_SCRIPTS_EXECUTE_POST_T_DEFINED
 #endif
+
+//  Extra headers
 
 //  Internal API
 // common definitions and idioms from czmq_prelude.h, which are used in generated code
