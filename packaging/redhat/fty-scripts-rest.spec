@@ -1,5 +1,6 @@
 #
 #    fty-scripts-rest - Scripts REST API
+#
 #    NOTE: This file was customized after generation, be sure to keep it
 #
 #    Copyright (C) 2014 - 2018 Eaton
@@ -53,8 +54,8 @@ BuildRequires:  log4cplus-devel
 BuildRequires:  fty-common-logging-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  zeromq-devel
-BuildRequires:  czmq-devel
-BuildRequires:  malamute-devel
+BuildRequires:  czmq-devel >= 3.0.2
+BuildRequires:  malamute-devel >= 1.0.0
 BuildRequires:  openssl-devel
 BuildRequires:  fty-common-devel
 BuildRequires:  fty-common-mlm-devel
@@ -93,8 +94,8 @@ Requires:       log4cplus-devel
 Requires:       fty-common-logging-devel
 Requires:       libsodium-devel
 Requires:       zeromq-devel
-Requires:       czmq-devel
-Requires:       malamute-devel
+Requires:       czmq-devel >= 3.0.2
+Requires:       malamute-devel >= 1.0.0
 Requires:       openssl-devel
 Requires:       fty-common-devel
 Requires:       fty-common-mlm-devel

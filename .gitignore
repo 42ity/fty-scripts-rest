@@ -63,6 +63,12 @@ src/stamp-h1
 src/test-suite.log
 src/.dirstamp
 
+# ECPP generated
+src/rest_scripts_DELETE.cc
+src/rest_scripts_GET.cc
+src/rest_scripts_POST.cc
+src/rest_scripts_execute_POST.cc
+
 # CMake cache
 CMakeCache.txt
 CMakeFiles/
@@ -135,9 +141,3 @@ nbproject/
 
 # editor backups
 *~
-
-# ecppc results
-src/rest_scripts_GET.cc
-src/rest_scripts_POST.cc
-src/rest_scripts_DELETE.cc
-src/rest_scripts_execute_POST.cc
