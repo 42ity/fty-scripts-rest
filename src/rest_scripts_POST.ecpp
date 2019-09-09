@@ -66,6 +66,8 @@ UserInfo user;
         http_die("content-too-big", std::to_string(SCRIPT_FILE_MAX_SIZE).c_str());
     }
 
+    bool allowOverwrite = qparam.param("overwrite") == "true";
+
     // Open directory.
     DIR *fdir = opendir(SCRIPT_DIRECTORY.c_str());
     if (!fdir) {
@@ -96,6 +98,10 @@ UserInfo user;
         std::ostringstream msg;
         msg << "Max number of scripts reached (" << nbfiles << " in store, max " << SCRIPT_MAX_FILES << ")";
         http_die("precondition-failed", msg.str().c_str());
+    }
+
+    if (known_script && !allowOverwrite) {
+        http_die("data-conflict", "A script with that name already exists");
     }
 
     // Grab file data.
