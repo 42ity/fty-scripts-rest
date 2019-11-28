@@ -50,19 +50,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  gcc-c++
 BuildRequires:  cxxtools-devel
-BuildRequires:  log4cplus-devel
 BuildRequires:  fty-common-logging-devel
-BuildRequires:  libsodium-devel
-BuildRequires:  zeromq-devel
-BuildRequires:  czmq-devel >= 3.0.2
-BuildRequires:  malamute-devel >= 1.0.0
-BuildRequires:  openssl-devel
-BuildRequires:  fty-common-devel
 BuildRequires:  fty-common-mlm-devel
-BuildRequires:  tntnet-devel
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  tntdb-devel
-BuildRequires:  fty-common-db-devel
 BuildRequires:  fty-common-rest-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -90,19 +79,8 @@ Summary:        scripts rest api
 Group:          System/Libraries
 Requires:       libfty_scripts_rest1 = %{version}
 Requires:       cxxtools-devel
-Requires:       log4cplus-devel
 Requires:       fty-common-logging-devel
-Requires:       libsodium-devel
-Requires:       zeromq-devel
-Requires:       czmq-devel >= 3.0.2
-Requires:       malamute-devel >= 1.0.0
-Requires:       openssl-devel
-Requires:       fty-common-devel
 Requires:       fty-common-mlm-devel
-Requires:       tntnet-devel
-Requires:       cyrus-sasl-devel
-Requires:       tntdb-devel
-Requires:       fty-common-db-devel
 Requires:       fty-common-rest-devel
 
 %description devel
