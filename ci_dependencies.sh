@@ -55,13 +55,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         else
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
+            source ./ci_dependencies.sh $PROPAGATED_BRANCH
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -122,13 +122,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
+            source ./ci_dependencies.sh $PROPAGATED_BRANCH
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -189,13 +189,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
+            source ./ci_dependencies.sh $PROPAGATED_BRANCH
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -256,13 +256,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh the default branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh)
+            source ./ci_dependencies.sh
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
+            source ./ci_dependencies.sh $PROPAGATED_BRANCH
         fi
     fi
     if [ -e autogen.sh ]; then
