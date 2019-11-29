@@ -2,3 +2,4 @@
    fty-scripts-rest -> fty-common-logging;
    fty-scripts-rest -> fty-common-mlm;
    fty-scripts-rest -> fty-common-rest;
+   fty-scripts-rest -> tntdb;
