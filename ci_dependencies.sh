@@ -46,7 +46,8 @@ else
             $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/cxxtools.git $FOLDER_NAME
         fi
     fi
-    cd "./$FOLDER_NAME"
+    echo "Entering in ${PWD}/${FOLDER_NAME}"
+    cd "./${FOLDER_NAME}"
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
         git --no-pager log --oneline -n1
@@ -55,13 +56,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         else
             echo "`date`: INFO: Building prerequisites of 'cxxtools' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            source ./ci_dependencies.sh $PROPAGATED_BRANCH
+            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -81,7 +82,9 @@ else
     $CI_TIME ./configure "${CONFIG_OPTS[@]}"
     $CI_TIME make -j4
     $CI_TIME make install
+    echo "Leaving from ${PWD}"
     cd "${BASE_PWD}"
+    echo "Now in ${PWD}"
 fi
 fi
 
@@ -113,7 +116,8 @@ else
             $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/fty-common-logging.git $FOLDER_NAME
         fi
     fi
-    cd "./$FOLDER_NAME"
+    echo "Entering in ${PWD}/${FOLDER_NAME}"
+    cd "./${FOLDER_NAME}"
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
         git --no-pager log --oneline -n1
@@ -122,13 +126,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-logging' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            source ./ci_dependencies.sh $PROPAGATED_BRANCH
+            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -148,7 +152,9 @@ else
     $CI_TIME ./configure "${CONFIG_OPTS[@]}"
     $CI_TIME make -j4
     $CI_TIME make install
+    echo "Leaving from ${PWD}"
     cd "${BASE_PWD}"
+    echo "Now in ${PWD}"
 fi
 fi
 
@@ -180,7 +186,8 @@ else
             $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/fty-common-mlm.git $FOLDER_NAME
         fi
     fi
-    cd "./$FOLDER_NAME"
+    echo "Entering in ${PWD}/${FOLDER_NAME}"
+    cd "./${FOLDER_NAME}"
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
         git --no-pager log --oneline -n1
@@ -189,13 +196,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-mlm' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            source ./ci_dependencies.sh $PROPAGATED_BRANCH
+            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -215,7 +222,9 @@ else
     $CI_TIME ./configure "${CONFIG_OPTS[@]}"
     $CI_TIME make -j4
     $CI_TIME make install
+    echo "Leaving from ${PWD}"
     cd "${BASE_PWD}"
+    echo "Now in ${PWD}"
 fi
 fi
 
@@ -247,7 +256,8 @@ else
             $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/fty-common-rest.git $FOLDER_NAME
         fi
     fi
-    cd "./$FOLDER_NAME"
+    echo "Entering in ${PWD}/${FOLDER_NAME}"
+    cd "./${FOLDER_NAME}"
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
         git --no-pager log --oneline -n1
@@ -256,13 +266,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         else
             echo "`date`: INFO: Building prerequisites of 'fty-common-rest' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            source ./ci_dependencies.sh $PROPAGATED_BRANCH
+            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -282,7 +292,9 @@ else
     $CI_TIME ./configure "${CONFIG_OPTS[@]}"
     $CI_TIME make -j4
     $CI_TIME make install
+    echo "Leaving from ${PWD}"
     cd "${BASE_PWD}"
+    echo "Now in ${PWD}"
 fi
 fi
 
@@ -314,7 +326,8 @@ else
             $CI_TIME git clone --quiet --depth 1 https://github.com/42ity/tntdb.git $FOLDER_NAME
         fi
     fi
-    cd "./$FOLDER_NAME"
+    echo "Entering in ${PWD}/${FOLDER_NAME}"
+    cd "./${FOLDER_NAME}"
     cd ./tntdb
     CCACHE_BASEDIR=${PWD}
     export CCACHE_BASEDIR
@@ -324,13 +337,13 @@ else
         DEFAULT_BRANCH="`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`"
         if [ "x$REQUESTED_BRANCH" = "x" ]; then
             echo "`date`: INFO: Building prerequisites of 'tntdb' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         elif [ "x$PROPAGATED_BRANCH" = "x$DEFAULT_BRANCH" ]; then
             echo "`date`: INFO: Building prerequisites of 'tntdb' using ci_dependencies.sh the default branch..." >&2
-            source ./ci_dependencies.sh
+            ($CI_TIME source ./ci_dependencies.sh)
         else
             echo "`date`: INFO: Building prerequisites of 'tntdb' using ci_dependencies.sh $PROPAGATED_BRANCH branch..." >&2
-            source ./ci_dependencies.sh $PROPAGATED_BRANCH
+            ($CI_TIME source ./ci_dependencies.sh $PROPAGATED_BRANCH)
         fi
     fi
     if [ -e autogen.sh ]; then
@@ -350,7 +363,9 @@ else
     $CI_TIME ./configure "${CONFIG_OPTS[@]}"
     $CI_TIME make -j4
     $CI_TIME make install
+    echo "Leaving from ${PWD}"
     cd "${BASE_PWD}"
+    echo "Now in ${PWD}"
 fi
 fi
 
