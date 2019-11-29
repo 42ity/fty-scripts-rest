@@ -1,3 +1,4 @@
+   fty-scripts-rest -> fty-common;
    fty-scripts-rest -> cxxtools;
    fty-scripts-rest -> fty-common-logging;
    fty-scripts-rest -> fty-common-mlm;

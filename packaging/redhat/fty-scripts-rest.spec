@@ -49,6 +49,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  gcc-c++
+BuildRequires:  fty-common-devel
 BuildRequires:  cxxtools-devel
 BuildRequires:  fty-common-logging-devel
 BuildRequires:  fty-common-mlm-devel
@@ -79,6 +80,7 @@ This package contains shared library for fty-scripts-rest: scripts rest api
 Summary:        scripts rest api
 Group:          System/Libraries
 Requires:       libfty_scripts_rest1 = %{version}
+Requires:       fty-common-devel
 Requires:       cxxtools-devel
 Requires:       fty-common-logging-devel
 Requires:       fty-common-mlm-devel

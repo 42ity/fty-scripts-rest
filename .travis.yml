@@ -64,6 +64,7 @@ pkg_deps_prereqs_distro: &pkg_deps_prereqs_distro
 # Prerequisite packages that may be built from source or used from
 # prebuilt packages of that source (usually not from an OS distro)
 pkg_deps_prereqs_source: &pkg_deps_prereqs_source
+    - libfty-common-dev
     - cxxtools-dev
     - libfty-common-logging-dev
     - libfty-common-mlm-dev
