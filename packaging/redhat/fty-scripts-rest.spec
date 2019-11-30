@@ -49,6 +49,9 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  gcc-c++
+BuildRequires:  libsodium-devel
+BuildRequires:  zeromq-devel
+BuildRequires:  czmq-devel >= 3.0.2
 BuildRequires:  fty-common-devel
 BuildRequires:  cxxtools-devel
 BuildRequires:  fty-common-logging-devel
@@ -80,6 +83,9 @@ This package contains shared library for fty-scripts-rest: scripts rest api
 Summary:        scripts rest api
 Group:          System/Libraries
 Requires:       libfty_scripts_rest1 = %{version}
+Requires:       libsodium-devel
+Requires:       zeromq-devel
+Requires:       czmq-devel >= 3.0.2
 Requires:       fty-common-devel
 Requires:       cxxtools-devel
 Requires:       fty-common-logging-devel
