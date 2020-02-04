@@ -63,7 +63,7 @@ src/stamp-h1
 src/test-suite.log
 src/.dirstamp
 
-# ECPP generated
+# Note: customization for ignoring ECPP generated source files
 src/rest_scripts_DELETE.cc
 src/rest_scripts_GET.cc
 src/rest_scripts_POST.cc
