@@ -57,6 +57,7 @@ env:
 #   - BUILD_TYPE=check-py
 
 # Prerequisite packages provided by OS distro and used "as is"
+# Note: customized here, but not sure if necessary
 pkg_deps_prereqs_distro: &pkg_deps_prereqs_distro
     - libssl-dev
     - libsasl2-dev
