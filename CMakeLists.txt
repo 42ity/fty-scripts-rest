@@ -43,10 +43,11 @@ fty_ecppbuilder(
 )
 
 # Create var/lib/fty/fty-scripts-rest
-#FIXME owner & privileges:
+# -- see debian postinst --
+# owner & privileges:
 #      d /var/lib/fty/fty-scripts-rest 2755 root www-data
 #      x /var/lib/fty/fty-scripts-rest/*
-install(DIRECTORY DESTINATION ${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/fty/${PROJECT_NAME_HYPHEN})
+#install(DIRECTORY DESTINATION ${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/fty/${PROJECT_NAME_HYPHEN})
 
 # Install tntnet mapping files in etc/tntnet/bios.d/
 install(FILES ${PROJECT_SOURCE_DIR}/resources/40_scripts-rest.xml DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/tntnet/bios.d/)
