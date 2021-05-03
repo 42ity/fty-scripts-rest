@@ -1,2 +1,2 @@
-usr/lib/*/libfty_scripts_rest.so*
+usr/lib/*/libfty_scripts_rest.so.*
 etc/tntnet/bios.d/*
