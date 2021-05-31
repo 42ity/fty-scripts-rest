@@ -27,7 +27,6 @@
 #include <fstream>
 
 #include <cxxtools/jsonserializer.h>
-#include <cxxtools/regex.h>
 
 #include <fty_common_rest_helpers.h>
 

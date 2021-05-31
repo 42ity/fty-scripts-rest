@@ -33,10 +33,9 @@
 
 #include <cxxtools/jsondeserializer.h>
 #include <cxxtools/jsonserializer.h>
-#include <cxxtools/regex.h>
 
 #include <fty_common_rest_helpers.h>
-#include <fty_common_mlm_subprocess.h>
+#include <fty/process.h>
 
 #include "helpers.h"
 
@@ -103,7 +102,6 @@ UserInfo user;
     // Build child's argv.
     std::vector<std::string> argv;
 
-    argv.push_back("/usr/bin/sudo");
     argv.push_back("/usr/libexec/fty/run-user-script");
     for (const auto &i : env) {
         argv.push_back("-e");
@@ -119,22 +117,24 @@ UserInfo user;
     // Launch child.
     gettimeofday(&tvStart, nullptr);
 
-    MlmSubprocess::SubProcess child(argv, MlmSubprocess::SubProcess::STDOUT_PIPE|MlmSubprocess::SubProcess::STDERR_TO_STDOUT_PIPE);
-    if (!child.run()) {
+    fty::Process proc("/usr/bin/sudo", argv, fty::Capture::Out | fty::Capture::Err);
+    if (!proc.run()) {
         http_die("internal-error", "Error while spawning process");
     }
 
-    // Slurp output.
-    char buffer[4096];
-    int buffer_read;
-    while ((buffer_read = read(child.getStdout(), buffer, sizeof(buffer))) > 0) {
-        output.write(buffer, buffer_read);
+    auto ret = proc.wait();
+    if (!ret) {
+        http_die("internal-error", ret.error().c_str());
+    }
+    if (*ret != 0) {
+        http_die("internal-error", "Process ended with error %d", *ret);
     }
 
-    status = child.wait(true);
+    output << proc.readAllStandardOutput();
+
     gettimeofday(&tvEnd, nullptr);
 
-    execution_time = (tvEnd.tv_sec - tvStart.tv_sec) + (tvEnd.tv_usec - tvStart.tv_usec) / 1000000.0;
+    execution_time = double(tvEnd.tv_sec - tvStart.tv_sec) + double(tvEnd.tv_usec - tvStart.tv_usec) / 1000000.0;
 
     // Serialize reply.
     cxxtools::SerializationInfo out;
