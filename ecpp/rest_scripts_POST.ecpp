@@ -29,9 +29,9 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <regex>
 
 #include <cxxtools/jsonserializer.h>
-#include <cxxtools/regex.h>
 
 #include <fty_common_rest_helpers.h>
 
@@ -60,7 +60,7 @@ UserInfo user;
     std::string checked_name;
     size_t filesize;
     check_regex_text_or_die("name", it->getFilename(), checked_name, SCRIPT_FILENAME_REGEX);
-    filesize = std::distance(it->getBodyBegin(), it->getBodyEnd());
+    filesize = size_t(std::distance(it->getBodyBegin(), it->getBodyEnd()));
     if (filesize > SCRIPT_FILE_MAX_SIZE) {
         http_die("content-too-big", std::to_string(SCRIPT_FILE_MAX_SIZE).c_str());
     }
@@ -74,13 +74,13 @@ UserInfo user;
     }
 
     int nbfiles = 0;
-    cxxtools::Regex filename_regex(SCRIPT_FILENAME_REGEX, REG_EXTENDED | REG_ICASE);
+    std::regex filename_regex(SCRIPT_FILENAME_REGEX, std::regex_constants::extended | std::regex_constants::icase);
     bool known_script = false;
 
     // Check max number of scripts.
     struct dirent *fdirent;
     while ((fdirent = readdir(fdir))) {
-        if (filename_regex.match(fdirent->d_name)) {
+        if (std::regex_match(fdirent->d_name, filename_regex)) {
             if (streq(fdirent->d_name, checked_name.c_str())) {
                 // We're going to replace an existing script.
                 known_script = true;
@@ -112,7 +112,7 @@ UserInfo user;
     if (!fd) {
         http_die("internal-error", "Error while opening file");
     }
-    fd.write(buffer, filesize);
+    fd.write(buffer, ptrdiff_t(filesize));
     if (!fd) {
         http_die("internal-error", "Error while writing file");
     }

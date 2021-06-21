@@ -11,6 +11,8 @@ set(PROJECT_NAME_HYPHEN fty-scripts-rest)
 
 ##############################################################################################################
 find_package(fty-cmake PATHS ${CMAKE_BINARY_DIR}/fty-cmake)
+find_package(fty-cmake-rest PATHS ${CMAKE_BINARY_DIR}/fty-cmake-rest)
+resolve_lib(tntnet)
 ##############################################################################################################
 
 # Define the servlet
@@ -20,13 +22,14 @@ etn_target(shared ${PROJECT_NAME}
   INCLUDE_DIRS
     include
   USES
+    czmq
+    fty-utils
     fty-cmake-rest
     cxxtools
     tntnet
     fty_common
     fty_common_logging
     fty_common_rest
-    fty_common_mlm
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
