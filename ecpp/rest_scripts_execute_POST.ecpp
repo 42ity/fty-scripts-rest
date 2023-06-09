@@ -31,11 +31,10 @@
 #include <spawn.h>
 #include <unistd.h>
 
-#include <cxxtools/jsondeserializer.h>
-#include <cxxtools/jsonserializer.h>
-
+#include <fty_common_json.h>
 #include <fty_common_rest_helpers.h>
 #include <fty/process.h>
+#include <cxxtools/serializationinfo.h>
 
 #include "helpers.h"
 
@@ -54,9 +53,7 @@ UserInfo user;
     // Deserialize request.
     cxxtools::SerializationInfo in;
     {
-        std::istringstream iss(request.getBody());
-        cxxtools::JsonDeserializer deserializer(iss);
-        deserializer.deserialize(in);
+        JSON::readFromString(request.getBody(), in);
     }
 
     // Grab request variables.
@@ -142,7 +139,6 @@ UserInfo user;
     out.addValue("result", status);
     out.addValue("output", output.str());
     {
-        cxxtools::JsonSerializer serializer(reply.out());
-        serializer.serialize(out).finish();
+        reply.out() << JSON::writeToString(out, false);
     }
 </%cpp>

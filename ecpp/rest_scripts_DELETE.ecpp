@@ -26,9 +26,9 @@
 #include <string>
 #include <fstream>
 
-#include <cxxtools/jsonserializer.h>
-
+#include <fty_common_json.h>
 #include <fty_common_rest_helpers.h>
+#include <cxxtools/serializationinfo.h>
 
 #include "helpers.h"
 
@@ -61,6 +61,5 @@ UserInfo user;
     // Serialize output.
     cxxtools::SerializationInfo si;
     si.addValue("name", checked_name);
-    cxxtools::JsonSerializer serializer(reply.out());
-    serializer.serialize(si).finish();
+    reply.out() << JSON::writeToString(si, false);
 </%cpp>
