@@ -52,9 +52,7 @@ UserInfo user;
 
     // Deserialize request.
     cxxtools::SerializationInfo in;
-    {
-        JSON::readFromString(request.getBody(), in);
-    }
+    JSON::readFromString(request.getBody(), in);
 
     // Grab request variables.
     std::string name;
@@ -62,16 +60,20 @@ UserInfo user;
     std::string checked_name;
     check_regex_text_or_die("name", name, checked_name, SCRIPT_FILENAME_REGEX);
 
-    std::vector<std::string> parameters, env;
+    std::vector<std::string> parameters; // script arguments
+    std::vector<std::string> env; // env. variables
     {
-        std::string array_parsing = "parameters";
+        std::string array_parsing = "-";
         try
         {
-            cxxtools::SerializationInfo *siParameters = in.findMember("parameters"), *siEnv = in.findMember("env");
+            array_parsing = "parameters";
+            cxxtools::SerializationInfo *siParameters = in.findMember("parameters");
             if (siParameters) {
                 *siParameters >>= parameters;
             }
+
             array_parsing = "env";
+            cxxtools::SerializationInfo *siEnv = in.findMember("env");
             if (siEnv) {
                 *siEnv >>= env;
             }
@@ -92,7 +94,6 @@ UserInfo user;
     }
 
     double execution_time;
-    int status;
     std::ostringstream output;
     struct timeval tvStart, tvEnd;
 
@@ -118,13 +119,13 @@ UserInfo user;
     if (!proc.run()) {
         http_die("internal-error", "Error while spawning process");
     }
-
     auto ret = proc.wait();
     if (!ret) {
         http_die("internal-error", ret.error().c_str());
     }
-    if (*ret != 0) {
-        http_die("internal-error", "Process ended with error %d", *ret);
+    int status{*ret};
+    if (status != 0) {
+        http_die("internal-error", "Process ended with error %d", status);
     }
 
     output << proc.readAllStandardOutput();
@@ -138,7 +139,5 @@ UserInfo user;
     out.addValue("execution_time", execution_time);
     out.addValue("result", status);
     out.addValue("output", output.str());
-    {
-        reply.out() << JSON::writeToString(out, false);
-    }
+    reply.out() << JSON::writeToString(out, false);
 </%cpp>
