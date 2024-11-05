@@ -68,7 +68,7 @@ UserInfo user;
         struct dirent *fdirent;
         while ((fdirent = readdir(fdir))) {
             if (std::regex_match(fdirent->d_name, filename_regex)) {
-                files.addMember("") <<= fdirent->d_name;
+                files.addMember("") <<= std::string(fdirent->d_name);
             }
         }
         closedir(fdir);
