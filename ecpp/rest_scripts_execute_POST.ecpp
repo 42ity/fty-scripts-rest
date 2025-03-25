@@ -125,7 +125,9 @@ UserInfo user;
     }
     int status{*ret};
     if (status != 0) {
-        http_die("internal-error", "Process ended with error %d", status);
+        // is it really what we want? To return a HTTP error if the script fails?
+        std::string err = TRANSLATE_ME("Process ended with error %d", status);
+        http_die("internal-error", err.c_str());
     }
 
     output << proc.readAllStandardOutput();
