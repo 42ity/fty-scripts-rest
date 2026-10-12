@@ -100,7 +100,7 @@ UserInfo user;
     }
 
     if (known_script && !allowOverwrite) {
-        http_die("data-conflict", "A script with that name already exists");
+        http_die("data-conflict", checked_name.c_str(), "A script with that name already exists");
     }
 
     // Grab file data.
